@@ -1,2 +1,2 @@
-# GuessCountryByFlag
-Guess Country By Flag
+# StickyNotes
+Sticky Notes

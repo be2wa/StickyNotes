@@ -73,6 +73,39 @@
 "use strict";
 
 
+(function () {
+
+    var draggedEl, onDragStart, onDrag, onDragEnd, grabPointX, grabPointY;
+
+    onDragStart = function onDragStart(e) {
+        var boundingClientRect;
+        if (e.target.className.indexOf('bar') === -1) {
+            return;
+        }
+
+        draggedEl = this;
+
+        boundClientRect = draggedEl.getBoundingClientRect();
+
+        grabPointX = boundingClientRect.left - e.clientX;
+        grabPointY = boundingClientRect.top - e.clientY;
+    };
+
+    onDrag = function onDrag(e) {
+        if (!draggedEl) {
+            return;
+        }
+
+        var posX = e.clientX + grabPointX;
+        var posY = e.clientY + grabPointY;
+
+        draggedEl.style.transform = "translateX(" + posX + "px) translateY(" + posY + "px)";
+    };
+
+    //    document.addEventListener('mousemove', onDrag, false);
+    //    document.querySelector('.sticker').addEventListener('mousedown', onDragStart, false);
+})();
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
